@@ -1,5 +1,8 @@
 package com.heso.careo.models;
 
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,13 +15,13 @@ public class SalesOffer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String url;
-    private String tumbnail;
-    private String content;
+    private String tumbnailImageUrl;
+    private Element tumbnailHtml;
+    private Document contentHtml;
+    private String title;
 
     public SalesOffer(String url){
         this.url = url;
-        this.tumbnail = url;
-        this.content = url;
     }
 
     public Long getId() {
@@ -37,19 +40,46 @@ public class SalesOffer {
         this.url = url;
     }
 
-    public String getTumbnail() {
-        return tumbnail;
+    public Document getContentHtml() {
+        return contentHtml;
     }
 
-    public void setTumbnail(String tumbnail) {
-        this.tumbnail = tumbnail;
+    public void setContentHtml(Document content) {
+        this.contentHtml = content;
     }
 
-    public String getContent() {
-        return content;
+    public String getTitle() {
+        return title;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getTumbnailImageUrl() {
+        return tumbnailImageUrl;
+    }
+
+    public void setTumbnailImageUrl(String tumbnailImageUrl) {
+        this.tumbnailImageUrl = tumbnailImageUrl;
+    }
+
+    public Element getTumbnailHtml() {
+        return tumbnailHtml;
+    }
+
+    public void setTumbnailHtml(Element tumbnailHtml) {
+        this.tumbnailHtml = tumbnailHtml;
+    }
+
+    @Override
+    public String toString() {
+        return "SalesOffer{" +
+                "\n\tid=" + id +
+                "\n,\ttitle='" + title + '\'' +
+                "\n,\turl='" + url + '\'' +
+                "\n,\ttumbnailImageUrl='" + tumbnailImageUrl + '\'' +
+//                "\n,\tcontent='" + content + '\'' +
+                "\n}";
     }
 }
